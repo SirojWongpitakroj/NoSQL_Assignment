@@ -3,71 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
     <link rel="stylesheet" href="style.css">
 
     <title>Recipes Website</title>
 </head>
 <body>
     <main>
-        <h1>Add Recipes List</h1>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius, quas.</p>
-
-        <form class="recipe">
-            <label for="recipeTitle">Recipe Title</label>
-            <input id="recipeTitle" type="text" placeholder="Enter Recipe Title" required>
-
-            <label for="recipeChef">Chef's Name</label>
-            <input id="recipeChef" type="text" placeholder="Enter Chef's Name" required>
+        <form class="recipe-form">
+            <h1>New Recipe</h1>
+            <p>Let's add a new recipe. Thank you for taking part to make this community grow bigger.</p>
 
             <div>
-                <h2>Ingredients</h2>
-                <label for="ingredientName">Ingredient Name</label>
-                <input id="ingredientName" type="text" placeholder="Enter Ingredient Name" required>
-
-                <label for="ingredientAmount">Amount</label>
-                <input id="ingredientAmount" type="number" placeholder="Enter Amount" required>
-
-                <label for="ingredientUnit">Unit</label>
-                <select for="ingredientUnit" name="Unit" id="ingredientUnit" required>
-                    <option value="" disabled selected>Select a unit</option>
-
-                    <optgroup label="Volume">
-                        <option value="ml">Milliliter (ml)</option>
-                        <option value="l">Liter (l)</option>
-                        <option value="tsp">Teaspoon (tsp)</option>
-                        <option value="tbsp">Tablespoon (tbsp)</option>
-                        <option value="cup">Cup</option>
-                      </optgroup>
-                      
-                      <optgroup label="Weight">
-                        <option value="g">Gram (g)</option>
-                        <option value="kg">Kilogram (kg)</option>
-                        <option value="oz">Ounce (oz)</option>
-                        <option value="lb">Pound (lb)</option>
-                      </optgroup>
-                    
-                      <optgroup label="Quantities">
-                        <option value="whole">Whole / Piece</option>
-                        <option value="clove">Clove</option>
-                        <option value="pinch">Pinch</option>
-                      </optgroup>
-                </select>
-                <button type="button">Add Ingredient</button>
+                <label class="title" for="recipeTitle">Recipe Title</label>
+                <input id="recipeTitle" type="text" placeholder="Enter Recipe Title" required>
             </div>
 
             <div>
+                <label class="title" for="recipeChef">Chef's Name</label>
+                <input id="recipeChef" type="text" placeholder="Enter Chef's Name" required>
+            </div>
+
+            <div class="ingredient">
+                <h2>Ingredients</h2>
+                <div class="ingredient__detail">
+                    <label for="ingredientName" class="ingredient__Name">Ingredient Name</label>
+                    <input id="ingredientName" class="ingredient__Name" type="text" placeholder="Enter Ingredient Name" required>
+
+                    <label for="ingredientAmount" class="ingredient__Amount">Amount</label>
+                    <input id="ingredientAmount" class="ingredient__Amount" type="number" placeholder="Enter Amount" required>
+
+                    <label for="ingredientUnit" class="ingredient__Unit">Unit</label>
+                    <select for="ingredientUnit" class="ingredient__Unit" name="Unit" id="ingredientUnit" required>
+                        <option value="" disabled selected>Select a unit</option>
+
+                        <optgroup label="Volume">
+                            <option value="ml">Milliliter (ml)</option>
+                            <option value="l">Liter (l)</option>
+                            <option value="tsp">Teaspoon (tsp)</option>
+                            <option value="tbsp">Tablespoon (tbsp)</option>
+                            <option value="cup">Cup</option>
+                        </optgroup>
+                        
+                        <optgroup label="Weight">
+                            <option value="g">Gram (g)</option>
+                            <option value="kg">Kilogram (kg)</option>
+                            <option value="oz">Ounce (oz)</option>
+                            <option value="lb">Pound (lb)</option>
+                        </optgroup>
+                        
+                        <optgroup label="Quantities">
+                            <option value="whole">Whole / Piece</option>
+                            <option value="clove">Clove</option>
+                            <option value="pinch">Pinch</option>
+                        </optgroup>
+                    </select>
+                </div>
+                
+                <button class="btn btn-ghost" type="button">+ Add Ingredient</button>
+            </div>
+
+            <div class="steps">
                 <h2>Steps</h2>
                 <input type="textarea" placeholder="Enter Step" required>
-                <button type="button">Add Next Step</button>
+                <button class="btn btn-ghost" type="button">+ Add Next Step</button>
             </div>
 
-            <div>
+            <div class="equipment">
                 <h2>Equipment Needed</h2>
                 <input type="text" placeholder="Enter Equipment Needed" required>
-                <button type="button">Add Equipment</button>
+                <button class="btn btn-ghost" type="button">+ Add Equipment</button>
             </div>
 
-            <button type="submit">Submit Recipe</button>
+            <button class="btn btn-submit" type="submit">Submit Recipe</button>
         </form>
     </main>
 </body>
