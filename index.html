@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-
+    <!-- css -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- javascript -->
+    <script src="./script.js" defer></script>
 
     <title>Recipes Website</title>
 </head>
@@ -17,25 +20,25 @@
 
             <div>
                 <label class="title" for="recipeTitle">Recipe Title</label>
-                <input id="recipeTitle" type="text" placeholder="Enter Recipe Title" required>
+                <input id="recipeTitle" type="text" name="recipeTitle" placeholder="Enter Recipe Title" required>
             </div>
 
             <div>
                 <label class="title" for="recipeChef">Chef's Name</label>
-                <input id="recipeChef" type="text" placeholder="Enter Chef's Name" required>
+                <input id="recipeChef" type="text" name="chefName" placeholder="Enter Chef's Name" required>
             </div>
 
             <div class="ingredient">
                 <h2>Ingredients</h2>
                 <div class="ingredient__detail">
-                    <label for="ingredientName" class="ingredient__Name">Ingredient Name</label>
-                    <input id="ingredientName" class="ingredient__Name" type="text" placeholder="Enter Ingredient Name" required>
+                    <label for="ingredientName_0" class="ingredient__Name">Ingredient Name</label>
+                    <input id="ingredientName_0" class="ingredient__Name" name="ingredientName" type="text" placeholder="Enter Ingredient Name" required>
 
-                    <label for="ingredientAmount" class="ingredient__Amount">Amount</label>
-                    <input id="ingredientAmount" class="ingredient__Amount" type="number" placeholder="Enter Amount" required>
+                    <label for="ingredientAmount_0" class="ingredient__Amount">Amount</label>
+                    <input id="ingredientAmount_0" class="ingredient__Amount" name="ingredientAmount" type="number" placeholder="Enter Amount" required>
 
-                    <label for="ingredientUnit" class="ingredient__Unit">Unit</label>
-                    <select for="ingredientUnit" class="ingredient__Unit" name="Unit" id="ingredientUnit" required>
+                    <label for="ingredientUnit_0" class="ingredient__Unit">Unit</label>
+                    <select id="ingredientUnit_0" class="ingredient__Unit" name="ingredientUnit" required>
                         <option value="" disabled selected>Select a unit</option>
 
                         <optgroup label="Volume">
@@ -61,19 +64,19 @@
                     </select>
                 </div>
                 
-                <button class="btn btn-ghost" type="button">+ Add Ingredient</button>
+                <button class="btn btn-ghost" id="add-ingredient-btn" type="button">+ Add Ingredient</button>
             </div>
 
             <div class="steps">
                 <h2>Steps</h2>
-                <input type="textarea" placeholder="Enter Step" required>
-                <button class="btn btn-ghost" type="button">+ Add Next Step</button>
+                <input id="step_0" type="textarea" name="step" placeholder="Enter Step" required>
+                <button class="btn btn-ghost" id="add-step-btn" type="button">+ Add Next Step</button>
             </div>
 
             <div class="equipment">
                 <h2>Equipment Needed</h2>
-                <input type="text" placeholder="Enter Equipment Needed" required>
-                <button class="btn btn-ghost" type="button">+ Add Equipment</button>
+                <input id="equipment_0" type="text" name="equipment" placeholder="Enter Equipment Needed" required>
+                <button class="btn btn-ghost" id="add-equipment-btn" type="button">+ Add Equipment</button>
             </div>
 
             <button class="btn btn-submit" type="submit">Submit Recipe</button>
