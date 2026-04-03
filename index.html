@@ -30,53 +30,69 @@
 
             <div class="ingredient">
                 <h2>Ingredients</h2>
-                <div class="ingredient__detail">
-                    <label for="ingredientName_0" class="ingredient__Name">Ingredient Name</label>
-                    <input id="ingredientName_0" class="ingredient__Name" name="ingredientName" type="text" placeholder="Enter Ingredient Name" required>
+                <div class="ingredient__row">
+                    <div class="ingredient__column" id="ingredient-name-container">
+                        <label for="ingredientName_0" class="ingredient__Name">Name</label>
+                        <input id="ingredientName_0" class="ingredient__Name" name="ingredientName" type="text" placeholder="Enter Ingredient Name" required>
+                    </div>
 
-                    <label for="ingredientAmount_0" class="ingredient__Amount">Amount</label>
-                    <input id="ingredientAmount_0" class="ingredient__Amount" name="ingredientAmount" type="number" placeholder="Enter Amount" required>
+                    <div class="ingredient__column" id="ingredient-amount-container">
+                        <label for="ingredientAmount_0" class="ingredient__Amount">Amount</label>
+                        <input id="ingredientAmount_0" class="ingredient__Amount" name="ingredientAmount" type="number" placeholder="Enter Amount" required>
+                    </div>
+    
+                    <div class="ingredient__column" id="ingredient-unit-container">
+                        <label for="ingredientUnit_0" class="ingredient__Unit">Unit</label>
+                        <select id="ingredientUnit_0" class="ingredient__Unit" name="ingredientUnit" required>
+                            <option value="" disabled selected>Select a unit</option>
 
-                    <label for="ingredientUnit_0" class="ingredient__Unit">Unit</label>
-                    <select id="ingredientUnit_0" class="ingredient__Unit" name="ingredientUnit" required>
-                        <option value="" disabled selected>Select a unit</option>
-
-                        <optgroup label="Volume">
-                            <option value="ml">Milliliter (ml)</option>
-                            <option value="l">Liter (l)</option>
-                            <option value="tsp">Teaspoon (tsp)</option>
-                            <option value="tbsp">Tablespoon (tbsp)</option>
-                            <option value="cup">Cup</option>
-                        </optgroup>
-                        
-                        <optgroup label="Weight">
-                            <option value="g">Gram (g)</option>
-                            <option value="kg">Kilogram (kg)</option>
-                            <option value="oz">Ounce (oz)</option>
-                            <option value="lb">Pound (lb)</option>
-                        </optgroup>
-                        
-                        <optgroup label="Quantities">
-                            <option value="whole">Whole / Piece</option>
-                            <option value="clove">Clove</option>
-                            <option value="pinch">Pinch</option>
-                        </optgroup>
-                    </select>
+                            <optgroup label="Volume">
+                                <option value="ml">Milliliter (ml)</option>
+                                <option value="l">Liter (l)</option>
+                                <option value="tsp">Teaspoon (tsp)</option>
+                                <option value="tbsp">Tablespoon (tbsp)</option>
+                                <option value="cup">Cup</option>
+                            </optgroup>
+                            
+                            <optgroup label="Weight">
+                                <option value="g">Gram (g)</option>
+                                <option value="kg">Kilogram (kg)</option>
+                                <option value="oz">Ounce (oz)</option>
+                                <option value="lb">Pound (lb)</option>
+                            </optgroup>
+                            
+                            <optgroup label="Quantities">
+                                <option value="whole">Whole / Piece</option>
+                                <option value="clove">Clove</option>
+                                <option value="pinch">Pinch</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    
                 </div>
                 
-                <button class="btn btn-ghost" id="add-ingredient-btn" type="button">+ Add Ingredient</button>
+                <div class="button-container">
+                    <button class="btn btn-ghost" id="add-ingredient-btn" type="button">+ Add Ingredient</button>
+                    <button class="btn btn-remove">Remove Row</button>
+                </div>
             </div>
 
             <div class="steps">
                 <h2>Steps</h2>
                 <input id="step_0" type="textarea" name="step" placeholder="Enter Step" required>
-                <button class="btn btn-ghost" id="add-step-btn" type="button">+ Add Next Step</button>
+                <div>
+                    <button class="btn btn-ghost" id="add-step-btn" type="button">+ Add Next Step</button>
+                    <button class="btn btn-remove">Remove Row</button>
+                </div>
             </div>
 
             <div class="equipment">
                 <h2>Equipment Needed</h2>
                 <input id="equipment_0" type="text" name="equipment" placeholder="Enter Equipment Needed" required>
-                <button class="btn btn-ghost" id="add-equipment-btn" type="button">+ Add Equipment</button>
+                <div>
+                    <button class="btn btn-ghost" id="add-equipment-btn" type="button">+ Add Equipment</button>
+                    <button class="btn btn-remove">Remove Row</button>
+                </div>
             </div>
 
             <button class="btn btn-submit" type="submit">Submit Recipe</button>

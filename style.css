@@ -4,6 +4,8 @@
     --clr-primary-100: hsl(103, 15%, 91%);
     --clr-primary-700: hsl(153, 39%, 20%);
 
+    --clr-red-600: hsl(0, 100%, 40%);
+
     --ff-primary: 'Merriweather', 'serif';
     --ff-secondary: 'Open Sans', 'sans-serif';
 
@@ -130,43 +132,38 @@ input::placeholder, #ingredientUnit {
 }
 
 .ingredient {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
 }
 
-.ingredient__detail > label {
+.ingredient__row {
+  display: flex;
+}
+
+.ingredient__column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ingredient__column > label {
   font-size: 1.25rem;
 }
 
-.ingredient__detail {
-  display: flex;
-  flex-direction: column;
+.btn-container {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+
+  font-weight: var(--fw-bold);
 }
 
-@media (min-width: 500px) {
-  .ingredient__detail {
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 1fr 1fr;
-}
-}
-
-.ingredient__detail > label {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.ingredient__Name {
-  grid-column: span 5;
-}
-
-.ingredient__Amount {
-  grid-column: span 3;
-}
-
-.ingredient__Unit {
-  grid-column: span 4;
+.btn-remove {
+  border: none;
+  color: white;
+  background-color: var(--clr-red-600);
 }
 
 .btn {

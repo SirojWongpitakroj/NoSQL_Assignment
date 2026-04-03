@@ -24,7 +24,59 @@ addEqBtn.addEventListener('click', () => {
 
     addEqBtn.insertAdjacentHTML("beforebegin", newEquipment);
     eqCount++;
-})
+});
+
+// add ingredient
+const addIngredientBtn = document.getElementById('add-ingredient-btn');
+
+const ingredientNameContainer = document.getElementById('ingredient-name-container');
+const ingredientAmountContainer = document.getElementById('ingredient-amount-container');
+const ingredientUnitContainer = document.getElementById('ingredient-unit-container');
+
+let ingredientCount =  1;
+
+    addIngredientBtn.addEventListener('click', () => {
+        const newName = `
+            <input id="ingredientName_${ingredientCount}" class="ingredient__Name" name="ingredientName" type="text" placeholder="Enter Ingredient Name" required>
+        `;
+
+        const newAmount = `
+            <input id="ingredientAmount_${ingredientCount}" class="ingredient__Amount" name="ingredientAmount" type="number" placeholder="Enter Amount" required>
+        `;
+
+        const newUnit = `
+            <select id="ingredientUnit_0" class="ingredient__Unit" name="ingredientUnit" required>
+                <option value="" disabled selected>Select a unit</option>
+
+                <optgroup label="Volume">
+                    <option value="ml">Milliliter (ml)</option>
+                    <option value="l">Liter (l)</option>
+                    <option value="tsp">Teaspoon (tsp)</option>
+                    <option value="tbsp">Tablespoon (tbsp)</option>
+                    <option value="cup">Cup</option>
+                </optgroup>
+                
+                <optgroup label="Weight">
+                    <option value="g">Gram (g)</option>
+                    <option value="kg">Kilogram (kg)</option>
+                    <option value="oz">Ounce (oz)</option>
+                    <option value="lb">Pound (lb)</option>
+                </optgroup>
+                
+                <optgroup label="Quantities">
+                    <option value="whole">Whole / Piece</option>
+                    <option value="clove">Clove</option>
+                    <option value="pinch">Pinch</option>
+                </optgroup>
+            </select>
+        `;
+
+        ingredientNameContainer.insertAdjacentHTML('beforeend', newName);
+        ingredientAmountContainer.insertAdjacentHTML('beforeend', newAmount);
+        ingredientUnitContainer.insertAdjacentHTML('beforeend', newUnit);
+
+        ingredientCount++;
+ });
 
 
 
