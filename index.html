@@ -73,25 +73,32 @@
                 
                 <div class="button-container">
                     <button class="btn btn-ghost" id="add-ingredient-btn" type="button">+ Add Ingredient</button>
-                    <button class="btn btn-remove">Remove Row</button>
+                    <button class="btn btn-remove" id="ingredient-remove-btn" type="button">Remove Row</button>
                 </div>
             </div>
 
             <div class="steps">
                 <h2>Steps</h2>
-                <input id="step_0" type="textarea" name="step" placeholder="Enter Step" required>
+                
+                <div id="steps-container">
+                    <input id="step_0" type="textarea" name="step" placeholder="Enter Step" required>
+                </div>
+                
                 <div>
                     <button class="btn btn-ghost" id="add-step-btn" type="button">+ Add Next Step</button>
-                    <button class="btn btn-remove">Remove Row</button>
+                    <button class="btn btn-remove" id="step-remove-btn" type="button">Remove Row</button>
                 </div>
             </div>
 
             <div class="equipment">
                 <h2>Equipment Needed</h2>
-                <input id="equipment_0" type="text" name="equipment" placeholder="Enter Equipment Needed" required>
+                <div id="equipment-container">
+                    <input id="equipment_0" type="text" name="equipment" placeholder="Enter Equipment Needed" required>
+                </div>
+                
                 <div>
                     <button class="btn btn-ghost" id="add-equipment-btn" type="button">+ Add Equipment</button>
-                    <button class="btn btn-remove">Remove Row</button>
+                    <button class="btn btn-remove" id="equipment-remove-btn" type="button">Remove Row</button>
                 </div>
             </div>
 

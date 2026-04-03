@@ -160,18 +160,19 @@ input::placeholder, #ingredientUnit {
   font-weight: var(--fw-bold);
 }
 
-.btn-remove {
-  border: none;
-  color: white;
-  background-color: var(--clr-red-600);
-}
-
 .btn {
   margin-top: 1rem;
   padding: 0.5rem 1rem;
   border-radius: 50px;
 
   font-weight: var(--fw-bold);
+}
+
+.btn-remove {
+  border: none;
+  padding: 0.625rem 1.125rem;
+  color: white;
+  background-color: var(--clr-red-600);
 }
 
 .btn-ghost {
