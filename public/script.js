@@ -122,4 +122,3 @@ removeEqBtn.addEventListener('click', () => {
     }
 });
 
-

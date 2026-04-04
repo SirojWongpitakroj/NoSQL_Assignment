@@ -21,7 +21,9 @@
   },
   "homepage": "https://github.com/SirojWongpitakroj/NoSQL_Assignment#readme",
   "dependencies": {
+    "dotenv": "^17.4.0",
     "ejs": "^5.0.1",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "mongoose": "^9.4.1"
   }
 }

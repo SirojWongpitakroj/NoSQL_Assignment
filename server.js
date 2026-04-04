@@ -1,16 +1,25 @@
 import express from "express";
+import dotenv from 'dotenv';
+import { connectDB } from './config/mongodb.js';
+import Recipe from './models/Recipe.js';
 
 const app = express();
-const PORT = 3000;
+dotenv.config();
+
+// Connect to Database
+connectDB();
+
+const PORT = process.env.PORT;
 
 // middleware
-app.use(express.static('public'));
+app.set('view engine', 'ejs');
 
+app.use(express.static('public'));
 app.use(express.json());
 
 //main route
-app.get('/', (req, res) => {
-    res.render("index.ejs");
+app.get('/recipe', (req, res) => {
+    res.render("index");
 });
 
 app.listen(PORT, () => {
