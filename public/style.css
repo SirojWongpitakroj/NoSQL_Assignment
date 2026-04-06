@@ -184,4 +184,73 @@ input::placeholder, #ingredientUnit {
   background-color: var(--clr-primary-700);
 }
 
+/* Dashboard Table Styles */
+.recipe-dashboard {
+  width: 90%;
+  max-width: 1200px;
+  margin: 3rem auto;
+
+  border-collapse: collapse;
+  color: var(--clr-primary-700);
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.recipe-dashboard th {
+  padding: 1.2rem 1.5rem;
+  
+  background-color: var(--clr-primary-700);
+  color: white;
+
+  font-family: var(--ff-primary);
+  text-align: left;
+  font-size: 1.15rem;
+  font-weight: var(--fw-bold);
+}
+
+.recipe-dashboard td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: middle;
+  line-height: 1.6;
+}
+
+.ingredient-badge {
+  display: inline-block;
+
+  margin: 0.2rem;
+  padding: 0.25rem 0.6rem;
+  
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+
+  background-color: #e9ecef;
+  border-radius: 25px;
+}
+
+.step-list, .equipment-list {
+  padding-left: 1rem;
+  margin: 0;
+  
+  font-size: 1rem;
+}
+
+.step-list li {
+  margin-bottom: 0.3rem;
+}
+
+.recipe-dashboard td button {
+  display: inline-block;
+  border: none;
+  background-color: transparent;
+}
+
+.recipe-dashboard td button img {
+  width: 22px;
+  height: 22px;
+}
+
 

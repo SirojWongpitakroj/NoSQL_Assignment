@@ -19,8 +19,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //main route
+app.get('/', async (req, res) => {
+    const recipesFromDB = await Recipe.find().sort({ createdAt: -1 });
+    res.render('index', { recipes: recipesFromDB });
+});
+
+
+
+
+//recipe route
 app.get('/recipe', (req, res) => {
-    res.render("index");
+    res.render("recipe");
 });
 
 app.post('/recipe/submit', async (req, res) => {
