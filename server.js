@@ -63,6 +63,17 @@ app.get('/recipe/update/:id', async (req, res) => {
     res.render("recipe", { recipe: recipesFromDB, method: "update", id: req.params.id });
 });
 
+app.get('/recipe/delete/:id', async (req, res) => {
+    try {
+        const recipeId = req.params.id;
+        await Recipe.findByIdAndDelete(recipeId);
+        console.log("Successfully deleted the recipe");
+    } catch (err) {
+        res.status(500).send("Error deleting recipe");
+    }
+
+});
+
 app.post('/recipe/update/submit', async (req, res) => {
     try {
         const updatedRecipe = formatRecipeData(req.body);
