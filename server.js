@@ -18,12 +18,6 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//main route
-app.get('/', async (req, res) => {
-    const recipesFromDB = await Recipe.find().sort({ createdAt: -1 });
-    res.render('index', { recipes: recipesFromDB });
-});
-
 //utility function
 const formatRecipeData = (body) => {
     const names = [].concat(body['ingredientName']);
@@ -49,6 +43,25 @@ const formatRecipeData = (body) => {
     };
     return completeRecipe;
 };
+
+
+//main route
+app.get('/', async (req, res) => {
+    const recipesFromDB = await Recipe.find().sort({ createdAt: -1 });
+    res.render('index', { recipes: recipesFromDB });
+});
+
+//search
+app.get('/search/:term', async (req, res) => {
+    const searchTerm = req.params.term;
+    const recipesFromDB = await Recipe.find({
+        recipeTitle: {
+            $regex: searchTerm,
+            $options: 'i'
+        }
+    });
+    res.render('index', { recipes: recipesFromDB });
+});
 
 //recipe route
 app.get('/recipe/create', (req, res) => {

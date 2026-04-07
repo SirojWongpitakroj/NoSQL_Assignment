@@ -120,3 +120,27 @@ const createRecipeBtn = document.getElementById('create-recipe-btn');
 createRecipeBtn?.addEventListener('click', async () => {
     window.location.href = '/recipe/create';
 });
+
+//recipe Search
+const searchBar = document.getElementById('recipe-search');
+
+searchBar?.addEventListener('keydown', async (event) => {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        
+        try {
+            const searchTerm = searchBar.value.trim();
+            
+            if (searchTerm) {
+                window.location.href = `/search/${searchTerm}`;
+            } else {
+                // If they press enter on an empty bar, bring them back to the main dash
+                window.location.href = `/`; 
+            }
+            
+        } catch(err) {
+            console.error("Unsuccessful search", err);
+        }
+            
+    }
+});

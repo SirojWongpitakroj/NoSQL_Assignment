@@ -210,6 +210,29 @@ input::placeholder, #ingredientUnit {
   margin: 3rem auto;
 }
 
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.search-bar {
+  padding: 0.6rem 1.2rem;
+  border: 2px solid var(--clr-primary-700);
+  border-radius: 50px;
+  background-color: transparent;
+  color: var(--clr-primary-700);
+  width: 100%;
+  max-width: 400px;
+  font-weight: var(--fw-bold);
+  outline: none;
+}
+
+.search-bar::placeholder {
+  color: var(--clr-primary-700);
+}
+
 /* Dashboard Table Styles */
 .recipe-dashboard__table {
   width: 100%;
@@ -272,14 +295,15 @@ input::placeholder, #ingredientUnit {
   margin-bottom: 0.3rem;
 }
 
-.recipe-dashboard td a {
+.recipe-dashboard td button {
   display: inline-block;
   border: none;
   background-color: transparent;
+  padding: 0;
   margin: 0 0.125rem;
 }
 
-.recipe-dashboard td a img {
+.recipe-dashboard td button img {
   width: 22px;
   height: 22px;
 }
