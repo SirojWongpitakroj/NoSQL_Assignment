@@ -137,15 +137,25 @@ input::placeholder, #ingredientUnit {
   align-items: start;
 }
 
-.ingredient__row {
+#ingredients-wrapper {
   display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.ingredient__row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  width: 100%;
 }
 
 .ingredient__column {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.5rem;
+  flex: 1; /* Makes them share space dynamically */
 }
 
 .ingredient__column > label {
@@ -231,6 +241,12 @@ input::placeholder, #ingredientUnit {
   border-radius: 25px;
 }
 
+#steps-container, #equipment-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
 .step-list, .equipment-list {
   padding-left: 1rem;
   margin: 0;
@@ -242,13 +258,14 @@ input::placeholder, #ingredientUnit {
   margin-bottom: 0.3rem;
 }
 
-.recipe-dashboard td button {
+.recipe-dashboard td a {
   display: inline-block;
   border: none;
   background-color: transparent;
+  margin: 0 0.125rem;
 }
 
-.recipe-dashboard td button img {
+.recipe-dashboard td a img {
   width: 22px;
   height: 22px;
 }

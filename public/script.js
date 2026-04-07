@@ -33,52 +33,49 @@ addEqBtn.addEventListener('click', () => {
 // add ingredient
 const addIngredientBtn = document.getElementById('add-ingredient-btn');
 
-const ingredientNameContainer = document.getElementById('ingredient-name-container');
-const ingredientAmountContainer = document.getElementById('ingredient-amount-container');
-const ingredientUnitContainer = document.getElementById('ingredient-unit-container');
-
-let ingredientCount =  1;
+const ingredientsWrapper = document.getElementById('ingredients-wrapper');
+let ingredientCount = document.querySelectorAll('.ingredient__row').length || 1;
 
     addIngredientBtn.addEventListener('click', () => {
-        const newName = `
-            <input id="ingredientName_${ingredientCount}" class="ingredient__Name" name="ingredientName" type="text" placeholder="Enter Ingredient Name" required>
+        const newRow = `
+        <div class="ingredient__row">
+            <div class="ingredient__column">
+                <input id="ingredientName_${ingredientCount}" class="ingredient__Name" name="ingredientName" type="text" placeholder="Enter Ingredient Name" required>
+            </div>
+
+            <div class="ingredient__column">
+                <input id="ingredientAmount_${ingredientCount}" class="ingredient__Amount" name="ingredientAmount" type="number" placeholder="Enter Amount" required>
+            </div>
+
+            <div class="ingredient__column">
+                <select id="ingredientUnit_${ingredientCount}" class="ingredient__Unit" name="ingredientUnit" required>
+                    <option value="" disabled selected>Select a unit</option>
+                    <optgroup label="Volume">
+                        <option value="ml">Milliliter (ml)</option>
+                        <option value="l">Liter (l)</option>
+                        <option value="tsp">Teaspoon (tsp)</option>
+                        <option value="tbsp">Tablespoon (tbsp)</option>
+                        <option value="cup">Cup</option>
+                    </optgroup>
+                    
+                    <optgroup label="Weight">
+                        <option value="g">Gram (g)</option>
+                        <option value="kg">Kilogram (kg)</option>
+                        <option value="oz">Ounce (oz)</option>
+                        <option value="lb">Pound (lb)</option>
+                    </optgroup>
+                    
+                    <optgroup label="Quantities">
+                        <option value="whole">Whole / Piece</option>
+                        <option value="clove">Clove</option>
+                        <option value="pinch">Pinch</option>
+                    </optgroup>
+                </select>
+            </div>
+        </div>
         `;
 
-        const newAmount = `
-            <input id="ingredientAmount_${ingredientCount}" class="ingredient__Amount" name="ingredientAmount" type="number" placeholder="Enter Amount" required>
-        `;
-
-        const newUnit = `
-            <select id="ingredientUnit_0" class="ingredient__Unit" name="ingredientUnit" required>
-                <option value="" disabled selected>Select a unit</option>
-
-                <optgroup label="Volume">
-                    <option value="ml">Milliliter (ml)</option>
-                    <option value="l">Liter (l)</option>
-                    <option value="tsp">Teaspoon (tsp)</option>
-                    <option value="tbsp">Tablespoon (tbsp)</option>
-                    <option value="cup">Cup</option>
-                </optgroup>
-                
-                <optgroup label="Weight">
-                    <option value="g">Gram (g)</option>
-                    <option value="kg">Kilogram (kg)</option>
-                    <option value="oz">Ounce (oz)</option>
-                    <option value="lb">Pound (lb)</option>
-                </optgroup>
-                
-                <optgroup label="Quantities">
-                    <option value="whole">Whole / Piece</option>
-                    <option value="clove">Clove</option>
-                    <option value="pinch">Pinch</option>
-                </optgroup>
-            </select>
-        `;
-
-        ingredientNameContainer.insertAdjacentHTML('beforeend', newName);
-        ingredientAmountContainer.insertAdjacentHTML('beforeend', newAmount);
-        ingredientUnitContainer.insertAdjacentHTML('beforeend', newUnit);
-
+        ingredientsWrapper.insertAdjacentHTML('beforeend', newRow);
         ingredientCount++;
  });
 
@@ -89,11 +86,8 @@ const removeEqBtn = document.getElementById('equipment-remove-btn');
 
 //Remove Ingredient
 removeIngredientBtn.addEventListener('click', () => {
-    
-    if (ingredientCount > 1) {
-        ingredientNameContainer.lastElementChild.remove();
-        ingredientAmountContainer.lastElementChild.remove();
-        ingredientUnitContainer.lastElementChild.remove();
+    if (ingredientsWrapper.children.length > 1) {
+        ingredientsWrapper.lastElementChild.remove();
         ingredientCount--;
     } else {
         console.log("You must have at least 1 ingredient!")
@@ -102,8 +96,7 @@ removeIngredientBtn.addEventListener('click', () => {
 
 //Remove Step
 removeStepBtn.addEventListener('click', () => {
-    
-    if (stepCount > 1) {
+    if (stepContainer.children.length > 1) {
         stepContainer.lastElementChild.remove();
         stepCount--;
     } else {
@@ -113,8 +106,7 @@ removeStepBtn.addEventListener('click', () => {
 
 //Remove Equipment
 removeEqBtn.addEventListener('click', () => {
-    
-    if (eqCount > 1) {
+    if (equipmentContainer.children.length > 1) {
         equipmentContainer.lastElementChild.remove();
         eqCount--;
     } else {

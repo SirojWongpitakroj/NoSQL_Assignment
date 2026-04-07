@@ -24,18 +24,11 @@ app.get('/', async (req, res) => {
     res.render('index', { recipes: recipesFromDB });
 });
 
-
-
-
-//recipe route
-app.get('/recipe', (req, res) => {
-    res.render("recipe");
-});
-
-app.post('/recipe/submit', async (req, res) => {
-    const names = [].concat(req.body['ingredientName']);
-    const amounts = [].concat(req.body['ingredientAmount']);
-    const units = [].concat(req.body['ingredientUnit']);
+//utility function
+const formatRecipeData = (body) => {
+    const names = [].concat(body['ingredientName']);
+    const amounts = [].concat(body['ingredientAmount']);
+    const units = [].concat(body['ingredientUnit']);
     
     const ingredients = [];
     
@@ -48,19 +41,57 @@ app.post('/recipe/submit', async (req, res) => {
     };
 
     const completeRecipe = {
-        recipeTitle: req.body['recipeTitle'],
-        chefName: req.body['chefName'],
+        recipeTitle: body['recipeTitle'],
+        chefName: body['chefName'],
         ingredients: ingredients,
-        steps: [].concat(req.body['step']),
-        equipments: [].concat(req.body['equipment'])
+        steps: [].concat(body['step']),
+        equipments: [].concat(body['equipment'])
     };
+    return completeRecipe;
+};
+
+//recipe route
+app.get('/recipe/create', (req, res) => {
+    res.render("recipe", { 
+        method: "create",
+        recipe: { recipeTitle: '', chefName: '', ingredients: [], steps: [], equipments: [] }
+    });
+});
+
+app.get('/recipe/update/:id', async (req, res) => {
+    const recipesFromDB = await Recipe.findById(req.params.id);
+    res.render("recipe", { recipe: recipesFromDB, method: "update", id: req.params.id });
+});
+
+app.post('/recipe/update/submit', async (req, res) => {
+    try {
+        const updatedRecipe = formatRecipeData(req.body);
+
+        await Recipe.findByIdAndUpdate(
+            req.body.id,
+            updatedRecipe,
+            {
+                new: true,
+                runValidators: true
+            }
+        );
+        res.redirect('/');
+    } catch (err) {
+        console.error("Failed to update recipe", err.message);
+        res.status(500).send("There was an error updating the recipe");
+    }
+});
+
+app.post('/recipe/create/submit', async (req, res) => {
+    
+    const completeRecipe = formatRecipeData(req.body);
 
     try {
         const newRecipe = new Recipe(completeRecipe);
 
         await newRecipe.save();
 
-        res.redirect('/recipe');
+        res.redirect('/');
     } catch (err) {
         console.error("Failed to save recipe", err.message);
         res.status(500).send("There was an error saving the recipe");

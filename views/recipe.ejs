@@ -14,61 +14,73 @@
 </head>
 <body>
     <main>
-        <form class="recipe-form" method="POST" action="/recipe/submit">
+        <form class="recipe-form" method="POST" action="<%= method === 'create' ? '/recipe/create/submit' : '/recipe/update/submit'%>">
             <h1>New Recipe</h1>
             <p>Let's add a new recipe. Thank you for taking part to make this community grow bigger.</p>
 
             <div>
                 <label class="title" for="recipeTitle">Recipe Title</label>
-                <input id="recipeTitle" type="text" name="recipeTitle" placeholder="Enter Recipe Title" required>
+                <input id="recipeTitle" type="text" name="recipeTitle" placeholder="Enter Recipe Title" value="<%= recipe.recipeTitle %> " required>
             </div>
 
             <div>
                 <label class="title" for="recipeChef">Chef's Name</label>
-                <input id="recipeChef" type="text" name="chefName" placeholder="Enter Chef's Name" required>
+                <input id="recipeChef" type="text" name="chefName" placeholder="Enter Chef's Name" value="<%= recipe.chefName %>" required>
             </div>
 
             <div class="ingredient">
                 <h2>Ingredients</h2>
-                <div class="ingredient__row">
-                    <div class="ingredient__column" id="ingredient-name-container">
-                        <label for="ingredientName_0" class="ingredient__Name">Name</label>
-                        <input id="ingredientName_0" class="ingredient__Name" name="ingredientName" type="text" placeholder="Enter Ingredient Name" required>
-                    </div>
+                <% let count = 0; %>
+                <div id="ingredients-wrapper">
+                    <% recipe.ingredients.forEach(ingredient => { %>
+                    <div class="ingredient__row">
+                        
+                        <div class="ingredient__column">
+                            <% if (count === 0) { %>
+                                <label for="ingredientName_0" class="ingredient__Name">Name</label>
+                            <% } %> 
+                            <input id="ingredientName_0" class="ingredient__Name" name="ingredientName" type="text" value="<%= ingredient['name'] %>" placeholder="Enter Ingredient Name" required>
+                        </div>
 
-                    <div class="ingredient__column" id="ingredient-amount-container">
-                        <label for="ingredientAmount_0" class="ingredient__Amount">Amount</label>
-                        <input id="ingredientAmount_0" class="ingredient__Amount" name="ingredientAmount" type="number" placeholder="Enter Amount" required>
-                    </div>
-    
-                    <div class="ingredient__column" id="ingredient-unit-container">
-                        <label for="ingredientUnit_0" class="ingredient__Unit">Unit</label>
-                        <select id="ingredientUnit_0" class="ingredient__Unit" name="ingredientUnit" required>
-                            <option value="" disabled selected>Select a unit</option>
+                        <div class="ingredient__column">
+                            <% if (count === 0) { %>
+                                <label for="ingredientAmount_0" class="ingredient__Amount">Amount</label>
+                            <% } %>
+                            <input id="ingredientAmount_0" class="ingredient__Amount" name="ingredientAmount" type="number" value="<%= ingredient['amount'] %>" placeholder="Enter Amount" required>
+                        </div>
+        
+                        <div class="ingredient__column">
+                            <% if (count === 0) { %>
+                                <label for="ingredientUnit_0" class="ingredient__Unit">Unit</label>
+                            <% } %>
+                            <select id="ingredientUnit_0" class="ingredient__Unit" name="ingredientUnit" value required>
+                                <option value="" disabled selected>Select a unit</option>
 
-                            <optgroup label="Volume">
-                                <option value="ml">Milliliter (ml)</option>
-                                <option value="l">Liter (l)</option>
-                                <option value="tsp">Teaspoon (tsp)</option>
-                                <option value="tbsp">Tablespoon (tbsp)</option>
-                                <option value="cup">Cup</option>
-                            </optgroup>
-                            
-                            <optgroup label="Weight">
-                                <option value="g">Gram (g)</option>
-                                <option value="kg">Kilogram (kg)</option>
-                                <option value="oz">Ounce (oz)</option>
-                                <option value="lb">Pound (lb)</option>
-                            </optgroup>
-                            
-                            <optgroup label="Quantities">
-                                <option value="whole">Whole / Piece</option>
-                                <option value="clove">Clove</option>
-                                <option value="pinch">Pinch</option>
-                            </optgroup>
-                        </select>
+                                <optgroup label="Volume">
+                                    <option value="ml" <%= ingredient['unit'] === 'ml' ? 'selected' : '' %>>Milliliter (ml)</option>
+                                    <option value="l" <%= ingredient['unit'] === 'l' ? 'selected' : '' %>>Liter (l)</option>
+                                    <option value="tsp" <%= ingredient['unit'] === 'tsp' ? 'selected' : '' %>>Teaspoon (tsp)</option>
+                                    <option value="tbsp" <%= ingredient['unit'] === 'tbsp' ? 'selected' : '' %>>Tablespoon (tbsp)</option>
+                                    <option value="cup" <%= ingredient['unit'] === 'cup' ? 'selected' : '' %>>Cup</option>
+                                </optgroup>
+                                
+                                <optgroup label="Weight">
+                                    <option value="g" <%= ingredient['unit'] === 'g' ? 'selected' : '' %>>Gram (g)</option>
+                                    <option value="kg" <%= ingredient['unit'] === 'kg' ? 'selected' : '' %>>Kilogram (kg)</option>
+                                    <option value="oz" <%= ingredient['unit'] === 'oz' ? 'selected' : '' %>>Ounce (oz)</option>
+                                    <option value="lb" <%= ingredient['unit'] === 'lb' ? 'selected' : '' %>>Pound (lb)</option>
+                                </optgroup>
+                                
+                                <optgroup label="Quantities">
+                                    <option value="whole" <%= ingredient['unit'] === 'whole' ? 'selected' : '' %>>Whole / Piece</option>
+                                    <option value="clove" <%= ingredient['unit'] === 'clove' ? 'selected' : '' %>>Clove</option>
+                                    <option value="pinch" <%= ingredient['unit'] === 'pinch' ? 'selected' : '' %>>Pinch</option>
+                                </optgroup>
+                            </select>
+                        </div>
                     </div>
-                    
+                    <% count++; %> 
+                    <% }); %> 
                 </div>
                 
                 <div class="button-container">
@@ -81,7 +93,9 @@
                 <h2>Steps</h2>
                 
                 <div id="steps-container">
-                    <input id="step_0" type="textarea" name="step" placeholder="Enter Step" required>
+                    <% recipe.steps.forEach(step => { %>
+                        <input id="step_0" type="textarea" name="step" value="<%= step %>"  placeholder="Enter Step" required>
+                    <% }) %> 
                 </div>
                 
                 <div>
@@ -93,7 +107,9 @@
             <div class="equipment">
                 <h2>Equipment Needed</h2>
                 <div id="equipment-container">
-                    <input id="equipment_0" type="text" name="equipment" placeholder="Enter Equipment Needed" required>
+                    <% recipe.equipments.forEach(eq => { %>
+                        <input id="equipment_0" type="text" name="equipment" value="<%= eq %>" placeholder="Enter Equipment Needed" required>
+                    <% }); %>
                 </div>
                 
                 <div>
@@ -101,7 +117,9 @@
                     <button class="btn btn-remove" id="equipment-remove-btn" type="button">Remove Row</button>
                 </div>
             </div>
-
+            <% if (method === "update") { %>
+                <input type="hidden" name="id" value="<%= id %>">
+            <% }; %>
             <button class="btn btn-submit" type="submit">Submit Recipe</button>
         </form>
     </main>
