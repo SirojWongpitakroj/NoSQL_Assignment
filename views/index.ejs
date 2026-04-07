@@ -14,57 +14,64 @@
 </head>
 <body>
     <main>
-        <table class="recipe-dashboard">
-            <thead>
-                <tr>
-                    <th>Recipe Title</th>
-                    <th>Chef</th>
-                    <th>Ingredients</th>
-                    <th>Steps</th>
-                    <th>Equipments</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
+        <section class="recipe-dashboard"> 
+            <button id="create-recipe-btn" type="button" class="btn btn-ghost">
+                Create New Recipe
+            </button>
 
-            <tbody>
-                <% recipes.forEach(recipe => { %>
+            <table class="recipe-dashboard__table">
+                <thead>
                     <tr>
-                        <td><%= recipe.recipeTitle %></td>
-                        <td><%= recipe.chefName %></td>
-                        <td>
-                            <% recipe.ingredients.forEach(ingredient => { %>
-                                <span class="ingredient-badge">
-                                    <%= ingredient['name'] %> 
-                                    (<%= ingredient['amount'] %> <%= ingredient['unit'] %>)
-                                </span>
-                            <% }) %> 
-                        </td>
-                        <td>
-                            <ol class="step-list">
-                                <% recipe.steps.forEach(step => { %>
-                                    <li><%= step %></li>
-                                <% }) %>
-                            </ol>
-                        </td>
-                        <td>
-                            <ul class="equipment-list">
-                                <% recipe.equipments.forEach(eq => { %>
-                                    <li><%= eq %></li>
-                                <% }) %>
-                            </ul>
-                        </td>
-                        <td>
-                            <a href="/recipe/update/<%= recipe._id %>">
-                                <img src="/assets/update-icon.svg" alt="Edit icon">
-                            </a>
-                            <a href="/recipe/delete/<%= recipe._id %>">
-                                <img src="/assets/delete-icon.svg" alt="Delete icon">
-                            </a>
-                        </td>
+                        <th>Recipe Title</th>
+                        <th>Chef</th>
+                        <th>Ingredients</th>
+                        <th>Steps</th>
+                        <th>Equipments</th>
+                        <th>Actions</th>
                     </tr>
-                <% }) %> 
-            </tbody>
-        </table>
+                </thead>
+
+                <tbody>
+                    <% recipes.forEach(recipe => { %>
+                        <tr>
+                            <td><%= recipe.recipeTitle %></td>
+                            <td><%= recipe.chefName %></td>
+                            <td>
+                                <% recipe.ingredients.forEach(ingredient => { %>
+                                    <span class="ingredient-badge">
+                                        <%= ingredient['name'] %> 
+                                        (<%= ingredient['amount'] %> <%= ingredient['unit'] %>)
+                                    </span>
+                                <% }) %> 
+                            </td>
+                            <td>
+                                <ol class="step-list">
+                                    <% recipe.steps.forEach(step => { %>
+                                        <li><%= step %></li>
+                                    <% }) %>
+                                </ol>
+                            </td>
+                            <td>
+                                <ul class="equipment-list">
+                                    <% recipe.equipments.forEach(eq => { %>
+                                        <li><%= eq %></li>
+                                    <% }) %>
+                                </ul>
+                            </td>
+                            <td>
+                                <a href="/recipe/update/<%= recipe._id %>">
+                                    <img src="/assets/update-icon.svg" alt="Edit icon">
+                                </a>
+                                <a href="/recipe/delete/<%= recipe._id %>">
+                                    <img src="/assets/delete-icon.svg" alt="Delete icon">
+                                </a>
+                            </td>
+                        </tr>
+                    <% }) %> 
+                </tbody>
+            </table>
+        </section>
+        
     </main>
 </body>
 </html>

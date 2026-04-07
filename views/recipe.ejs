@@ -20,7 +20,7 @@
 
             <div>
                 <label class="title" for="recipeTitle">Recipe Title</label>
-                <input id="recipeTitle" type="text" name="recipeTitle" placeholder="Enter Recipe Title" value="<%= recipe.recipeTitle %> " required>
+                <input id="recipeTitle" type="text" name="recipeTitle" placeholder="Enter Recipe Title" value="<%= recipe.recipeTitle %>" required>
             </div>
 
             <div>
@@ -120,7 +120,7 @@
             <% if (method === "update") { %>
                 <input type="hidden" name="id" value="<%= id %>">
             <% }; %>
-            <button class="btn btn-submit" type="submit">Submit Recipe</button>
+            <button id="recipe-submit-btn" class="btn btn-submit" type="submit">Submit Recipe</button>
         </form>
     </main>
 </body>

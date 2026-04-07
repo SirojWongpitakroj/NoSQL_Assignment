@@ -5,7 +5,7 @@ const stepContainer = document.getElementById('steps-container');
 
 let stepCount = 1;
 
-addStepBtn.addEventListener('click', () => {
+addStepBtn?.addEventListener('click', () => {
     const newStep = `
         <input id="step_${stepCount}" type="textarea" name="step" placeholder="Enter Step" style="margin-top: 0.5rem;" required>
     `;
@@ -21,7 +21,7 @@ const equipmentContainer = document.getElementById('equipment-container');
 
 let eqCount = 1;
 
-addEqBtn.addEventListener('click', () => {
+addEqBtn?.addEventListener('click', () => {
     const newEquipment = `
         <input id="equipment_${eqCount}" type="text" name="equipment" placeholder="Enter Equipment Needed" style="margin-top: 0.5rem" required>
     `;
@@ -36,7 +36,7 @@ const addIngredientBtn = document.getElementById('add-ingredient-btn');
 const ingredientsWrapper = document.getElementById('ingredients-wrapper');
 let ingredientCount = document.querySelectorAll('.ingredient__row').length || 1;
 
-    addIngredientBtn.addEventListener('click', () => {
+    addIngredientBtn?.addEventListener('click', () => {
         const newRow = `
         <div class="ingredient__row">
             <div class="ingredient__column">
@@ -85,7 +85,7 @@ const removeStepBtn = document.getElementById('step-remove-btn');
 const removeEqBtn = document.getElementById('equipment-remove-btn');
 
 //Remove Ingredient
-removeIngredientBtn.addEventListener('click', () => {
+removeIngredientBtn?.addEventListener('click', () => {
     if (ingredientsWrapper.children.length > 1) {
         ingredientsWrapper.lastElementChild.remove();
         ingredientCount--;
@@ -95,7 +95,7 @@ removeIngredientBtn.addEventListener('click', () => {
 });
 
 //Remove Step
-removeStepBtn.addEventListener('click', () => {
+removeStepBtn?.addEventListener('click', () => {
     if (stepContainer.children.length > 1) {
         stepContainer.lastElementChild.remove();
         stepCount--;
@@ -105,7 +105,7 @@ removeStepBtn.addEventListener('click', () => {
 });
 
 //Remove Equipment
-removeEqBtn.addEventListener('click', () => {
+removeEqBtn?.addEventListener('click', () => {
     if (equipmentContainer.children.length > 1) {
         equipmentContainer.lastElementChild.remove();
         eqCount--;
@@ -114,3 +114,9 @@ removeEqBtn.addEventListener('click', () => {
     }
 });
 
+//create Recipe button functionality
+const createRecipeBtn = document.getElementById('create-recipe-btn');
+
+createRecipeBtn?.addEventListener('click', async () => {
+    window.location.href = '/recipe/create';
+});
